@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  
   <title>Payleef - Payroll Management System</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -26,6 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </head>
 
 <body>
@@ -329,6 +330,7 @@
               <div class="form-group">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" maxlength="500" minlength="50" required></textarea>
               </div>
+              <center><div class="g-recaptcha" data-sitekey="6LcF-jgkAAAAALaiTstQNx7_1YovAPQ3fzTiSziQ"></div></center>
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
@@ -362,6 +364,18 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script>
+    $(document).ready(function(){
+        $(".recaptcha").on('submit',function(event){
+            var recaptcha = $("#g-recaptcha-response").val();
+            if(recaptcha === ""){
+                event.preventDefault();
+                alert("Please Check Recaptcha");
+            }
+        });
+    });
+  </script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
